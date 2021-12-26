@@ -1,35 +1,31 @@
 import React, { useState } from "react";
 
 const App = (props) => {
-  const [name, setName] = useState(props.name);
-  const [price, setPrice] = useState(props.price);
+  const [state, setState] = useState(props);
+  const { productName, price } = state;
 
-  const increment = () => {
-    setPrice((prevPrice) => prevPrice + 1);
-  };
-  const decrement = () => {
-    setPrice((prevPrice) => prevPrice - 1);
-  };
-  const reset = () => {
-    setPrice(props.price);
-    setName(props.name);
-  };
+  const increment = () => setState({ ...state, price: price + 1 });
+  const decrement = () => setState({ ...state, price: price - 1 });
+  const reset = () => setState(props);
 
   return (
     <>
       <p>
-        現在の{name}は、{price}です。
+        現在の{productName}は、{price}です。
       </p>
       <button onClick={increment}>+1</button>
       <button onClick={decrement}>-1</button>
       <button onClick={reset}>Reset</button>
-      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <input
+        value={productName}
+        onChange={(e) => setState({ ...state, productName: e.target.value })}
+      />
     </>
   );
 };
 
 App.defaultProps = {
-  name: "",
+  productName: "",
   price: 1000,
 };
 
