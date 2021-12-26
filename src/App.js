@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const App = (props) => {
   const [state, setState] = useState(props);
@@ -7,6 +7,18 @@ const App = (props) => {
   const increment = () => setState({ ...state, price: price + 1 });
   const decrement = () => setState({ ...state, price: price - 1 });
   const reset = () => setState(props);
+
+  useEffect(() => {
+    console.log("This is like componentDidMount or componetDidUpdate");
+  });
+
+  useEffect(() => {
+    console.log("This is like componentDidMount");
+  }, []);
+
+  useEffect(() => {
+    console.log("This callback is for productName only.");
+  }, [productName]);
 
   return (
     <>
