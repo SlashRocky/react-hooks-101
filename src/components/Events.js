@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../contexts/AppContext";
 import { Event } from "./Event";
 
 export const Events = (props) => {
   const { state, dispatch } = props;
+  const value = useContext(AppContext);
 
   return (
     <>
