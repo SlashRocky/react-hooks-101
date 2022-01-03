@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useReducer } from "react";
 import { EventForm } from "../components/EventForm";
 import { Events } from "../components/Events";
+import { OperationLogs } from "../components/OperationLogs";
 import { AppContext } from "../contexts/AppContext";
 import reducer from "../reducers";
 
@@ -18,6 +19,7 @@ const App = () => {
       <div className="container-fluid">
         <EventForm />
         <Events />
+        <OperationLogs />
       </div>
     </AppContext.Provider>
   );
